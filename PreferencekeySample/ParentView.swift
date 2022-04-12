@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct ParentView: View {
+    @State private var grandChildViewFrame: CGRect = CGRect()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        ZStack(alignment: .center) {
+            ChildView()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .onPreferenceChange(FramePreferenceKey.self, perform: { frame in
+                    grandChildViewFrame = frame
+                })
+            Text(grandChildViewFrame.debugDescription)
+                .foregroundColor(.white)
+        }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ParentView()
-    }
-}

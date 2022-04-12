@@ -12,7 +12,14 @@ struct ChildView: View {
         VStack {
             Spacer()
                 .frame(height: 100) // テキトーな余白
-            GrandChildView()
+            HStack {
+                Spacer()
+                    .frame(width: 50)
+                GrandChildView()
+                Spacer()
+                    .frame(width: 50)
+                
+            }
             Spacer()
                 .frame(height: 100)
         }
